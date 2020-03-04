@@ -17,7 +17,7 @@ export class BoardgamesComponent implements OnInit {
   ngOnInit() {
 
     this.e.getBoardGames().subscribe(
-      boardgames => this.boardgames = boardgames,
+      (boardgames: any) => this.boardgames = boardgames,
       err => this.loadingError = true);
     if (this.loadingError) {
       console.log("An error has occurred.");

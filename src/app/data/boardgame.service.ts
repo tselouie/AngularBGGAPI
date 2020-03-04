@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable} from "rxjs";
 import { Boardgame } from './boardgame';
 import { HttpClient } from "@angular/common/http";
+import { of } from 'rxjs';
 declare var require: any;
 
 @Injectable({
@@ -12,12 +13,15 @@ export class BoardgameService {
 
 private url = "https://www.boardgamegeek.com/xmlapi2/hot?type=boardgame";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  
+  }
   
   getBoardGames(): Observable<any[]> {
-
+   
+      var bgArray : Boardgame[] = [];
       const jsonparser = require('xml2js').parseString;
-      var bgarray : Boardgame[];
+      
 
      fetch(this.url)
         .then(response => response.text())
@@ -37,13 +41,16 @@ private url = "https://www.boardgamegeek.com/xmlapi2/hot?type=boardgame";
             var len = xml.getElementsByTagName('item').length;
             var items = xml.getElementsByTagName('item');
 
+
             for( var i = 0;i< len;i++){  
-              var bg = new Boardgame();
+              var bg = new Boardgame;
               bg.BoardGameName = items[i].children[1].getAttribute('value');
               bg.Thumbnail = items[i].children[0].getAttribute('value');
               bg._id = items[i].getAttribute('id');
-                bgarray.push(bg);
+              bgArray.push(bg);
             }
+
+            console.log(JSON.stringify(bgArray));
 
           
         //    xml.getElementsByTagName('item').forEach(element => {
@@ -53,13 +60,10 @@ private url = "https://www.boardgamegeek.com/xmlapi2/hot?type=boardgame";
         //   bg._id = element.children[2]
         //   bgarray.push(bg)
         // })
-         
-          
-          
-         console.log(bgarray);
+         console.log(this.http);
          })
 
-    return this.http.get<Boardgame[]>(`${this.url}/boardgames`)
+    return of(bgArray);
        
       }}
 

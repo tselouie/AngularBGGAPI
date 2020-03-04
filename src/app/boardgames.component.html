@@ -16,9 +16,9 @@
           </thead>
           <tbody>
             <tr *ngFor='let bg of boardgames'>
-              <td>{{bg.Thumbnail}}</td>
+              <td><img style="height:150px;width:150px;" src ="{{bg.Thumbnail}}"></td>
               <td>{{bg.BoardGameName}}</td>
-              <td>${{bg.ID}}</td>
+              <td>{{bg._id}}</td>
             </tr>
           </tbody>
         </table>
