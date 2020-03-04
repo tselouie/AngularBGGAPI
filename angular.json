@@ -140,5 +140,8 @@
       }
     }
   },
-  "defaultProject": "influx-ap"
+  "defaultProject": "influx-ap",
+  "cli": {
+    "analytics": "6695e39b-ec6e-4636-a503-c0db21eb1e69"
+  }
 }
