@@ -12,6 +12,8 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { PositionService } from './data/position.service';
 import { EmployeeService } from './data/employee.service';
 import { HttpClientModule} from "@angular/common/http";
+import { BoardgamesComponent } from './boardgames.component';
+import { BoardgameService } from './data/boardgame.service';
 
 @NgModule({
   declarations: [
@@ -22,14 +24,15 @@ import { HttpClientModule} from "@angular/common/http";
     ContentComponent,
     NavComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BoardgamesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [PositionService, EmployeeService],
+  providers: [PositionService, EmployeeService, BoardgameService],
   bootstrap: [AppComponent],
   
 })

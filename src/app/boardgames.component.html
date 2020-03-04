@@ -1,0 +1,29 @@
+<div class="center">
+  <h2>Hot Boardgames</h2>
+  <p class="lead">A table to display hot board games from BGG.</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-condensed table-hover">
+          <thead>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>ID</th>
+
+          </thead>
+          <tbody>
+            <tr *ngFor='let bg of boardgames'>
+              <td><img style="height:150px;width:150px;" src ="{{bg.Thumbnail}}"></td>
+              <td>{{bg.BoardGameName}}</td>
+              <td>{{bg._id}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
